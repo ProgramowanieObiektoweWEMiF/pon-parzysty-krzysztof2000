@@ -1,0 +1,9 @@
+c:\users\krzychu\documents\visual studio 2015\Projects\PoloczenieTCPKlient\PoloczenieTCPKlient\bin\Debug\PoloczenieTCPKlient.exe.config
+c:\users\krzychu\documents\visual studio 2015\Projects\PoloczenieTCPKlient\PoloczenieTCPKlient\bin\Debug\PoloczenieTCPKlient.exe
+c:\users\krzychu\documents\visual studio 2015\Projects\PoloczenieTCPKlient\PoloczenieTCPKlient\bin\Debug\PoloczenieTCPKlient.pdb
+c:\users\krzychu\documents\visual studio 2015\Projects\PoloczenieTCPKlient\PoloczenieTCPKlient\obj\Debug\PoloczenieTCPKlient.csprojResolveAssemblyReference.cache
+c:\users\krzychu\documents\visual studio 2015\Projects\PoloczenieTCPKlient\PoloczenieTCPKlient\obj\Debug\PoloczenieTCPKlient.Form1.resources
+c:\users\krzychu\documents\visual studio 2015\Projects\PoloczenieTCPKlient\PoloczenieTCPKlient\obj\Debug\PoloczenieTCPKlient.Properties.Resources.resources
+c:\users\krzychu\documents\visual studio 2015\Projects\PoloczenieTCPKlient\PoloczenieTCPKlient\obj\Debug\PoloczenieTCPKlient.csproj.GenerateResource.Cache
+c:\users\krzychu\documents\visual studio 2015\Projects\PoloczenieTCPKlient\PoloczenieTCPKlient\obj\Debug\PoloczenieTCPKlient.exe
+c:\users\krzychu\documents\visual studio 2015\Projects\PoloczenieTCPKlient\PoloczenieTCPKlient\obj\Debug\PoloczenieTCPKlient.pdb
