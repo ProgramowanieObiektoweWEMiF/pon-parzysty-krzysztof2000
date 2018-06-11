@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<Library>
+    <ListBook>
+        <Book NameBook="Bardzo">
+            <WhoWrote>Czlowiek</WhoWrote>
+            <Description>Walka dobra ze złem</Description>
+            <Borrow>tak</Borrow>
+        </Book>
+        <Book NameBook="ciekawa">
+            <WhoWrote>kot</WhoWrote>
+            <Description>Walka zła z dobrem</Description>
+            <Borrow>nie</Borrow>
+        </Book>
+        <Book NameBook="ksiazka">
+            <WhoWrote>pies</WhoWrote>
+            <Description>Walka kosci z ośćmi</Description>
+            <Borrow>może</Borrow>
+        </Book>
+        <Book NameBook="mega ksiazka">
+            <WhoWrote>nieznany</WhoWrote>
+            <Description>zapraszam do czytania</Description>
+            <Borrow>tak</Borrow>
+        </Book>
+    </ListBook>
+</Library>

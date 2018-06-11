@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<Library>
+    <ListBook>
+        <Book NameBook="ciekawa">
+            <WhoWrote>kot</WhoWrote>
+            <Description>Walka zla z dobrem</Description>
+            <Borrow>tak</Borrow>
+        </Book>
+        <Book NameBook="ksiazka">
+            <WhoWrote>pies</WhoWrote>
+            <Description>Walka kosci z oscmi</Description>
+            <Borrow>nie</Borrow>
+        </Book>
+        <Book NameBook="atmega">
+            <WhoWrote>tme</WhoWrote>
+            <Description>super mikrokontrolery</Description>
+            <Borrow>tak</Borrow>
+        </Book>
+        <Book NameBook="Przygody Reksia">
+            <WhoWrote>Wielki Elektronik</WhoWrote>
+            <Description>Jak zdobyc pyszna kosc</Description>
+            <Borrow>tak</Borrow>
+        </Book>
+    </ListBook>
+</Library>

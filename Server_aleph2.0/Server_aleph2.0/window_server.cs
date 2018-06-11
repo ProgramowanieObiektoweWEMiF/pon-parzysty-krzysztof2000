@@ -15,15 +15,22 @@ namespace Server_aleph_2
     public partial class window_server : Form
     {
 
-        private Server aleph = new Server(); // inicjacja klasy serwer
+       
+        private static Control alephControl = new Control(); //inicjacja klasy kontrol
+        private Server aleph = new Server(alephControl); // inicjacja klasy serwer
         public delegate int messageTolog(string message);
-        public static messageTolog  f;
+        public static messageTolog  Log;
+        private string path_lib = null;
+        public delegate void refreshData();
+        public static refreshData Grid;
+        private EditLibrary WindowEditLibrary = new EditLibrary(alephControl);
        
         public window_server()
         {
            
             InitializeComponent();
-            f = new messageTolog(editLog);
+           Log= new messageTolog(editLog);
+            Grid = new refreshData(refreshGrid);
            
             // StartServer();
         }
@@ -41,6 +48,13 @@ namespace Server_aleph_2
             buttonKlient.Enabled = true;
             numericUpDown1.Enabled = false;
             buttonStop.Enabled = true;
+            newBook.Enabled = false;
+            try
+            {
+                WindowEditLibrary.Close();
+            }
+            catch
+            { }
 
         }
 
@@ -48,8 +62,8 @@ namespace Server_aleph_2
         {
 
 
-                editLog("mamy aż: " + Server.clientSockets.Count + " klientów");
-               // listBox1.Items.Add(Server_Class.clientList.Count);
+             editLog("mamy aż: " + Server.clientSockets.Count + " klientów");
+             // listBox1.Items.Add(Server_Class.clientList.Count);
 
             
             
@@ -63,9 +77,7 @@ namespace Server_aleph_2
 
         private int editLog(object message)
         {
-                listBox1.Invoke(new MethodInvoker( delegate {listBox1.Items.Add(message);}));
-            
-            
+            listBox1.Invoke(new MethodInvoker( delegate {listBox1.Items.Add(message);}));
             
             return 0;
         }
@@ -77,17 +89,70 @@ namespace Server_aleph_2
             buttonKlient.Enabled = false;
             numericUpDown1.Enabled = true;
             buttonStop.Enabled = false;
+            newBook.Enabled = true;
         }
 
         private void window_server_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if(path_lib != null) alephControl.SaveLibrary(path_lib);
             aleph.StopServer();
         }
 
+
+        private void LoadLibrary(object sender, EventArgs e)
+        {
+            OpenFileDialog OpenLibrary = new OpenFileDialog();
+            OpenLibrary.Filter = "Plik XML|*.xml";
+            OpenLibrary.Title = "Wybierz biblioteke";
+
+            if (OpenLibrary.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                listBox1.Items.Add("otwieramy plik: " + OpenLibrary.FileName);
+                alephControl.ReadLibrary(OpenLibrary.FileName);
+                listBox1.Items.Add("Wczytano: " + Control.info.ListBook.Count);
+                dataGridView1.DataSource = Control.info.ListBook;
+                button1.Enabled = true;
+                loadBooks.Enabled = false;
+                newBook.Enabled = true;
+                path_lib = OpenLibrary.FileName;
+                //dataGridView1.Update();
+
+            }
+            else
+            {
+                listBox1.Items.Add("błąd otwarcia pliku XML");
+            }
+
+        }
+
+        private void refreshGrid()
+        {
+            dataGridView1.Invoke(new MethodInvoker(delegate
+            {
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = Control.info.ListBook;
+                dataGridView1.Refresh();
+            }));
+        }
+
+        private void newBook_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                WindowEditLibrary.Show();
+            }
+            catch
+            {
+                WindowEditLibrary = new EditLibrary(alephControl);
+                WindowEditLibrary.Show();
+            }
+         }
+
+      
+      
+       
+
         
-
-
-
 
        
     }

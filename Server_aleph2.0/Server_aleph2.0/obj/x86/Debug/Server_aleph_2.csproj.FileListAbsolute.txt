@@ -5,7 +5,19 @@ C:\Users\Tuszkn\documents\visual studio 2010\Projects\Servrer_aleph2.0\Servrer_a
 C:\Users\Tuszkn\documents\visual studio 2010\Projects\Servrer_aleph2.0\Servrer_aleph2.0\obj\x86\Debug\Server_aleph_2.csproj.GenerateResource.Cache
 C:\Users\Tuszkn\documents\visual studio 2010\Projects\Servrer_aleph2.0\Servrer_aleph2.0\obj\x86\Debug\Servrer_aleph2.0.exe
 C:\Users\Tuszkn\documents\visual studio 2010\Projects\Servrer_aleph2.0\Servrer_aleph2.0\obj\x86\Debug\Servrer_aleph2.0.pdb
-C:\Users\Tuszkn\Desktop\Servrer_aleph2.0\Servrer_aleph2.0\obj\x86\Debug\Servrer_aleph2.0.exe
-C:\Users\Tuszkn\Desktop\Servrer_aleph2.0\Servrer_aleph2.0\obj\x86\Debug\Servrer_aleph2.0.pdb
-C:\Users\Tuszkn\Desktop\Servrer_aleph2.0\Server_aleph2.0\obj\x86\Debug\Servrer_aleph2.0.exe
-C:\Users\Tuszkn\Desktop\Servrer_aleph2.0\Server_aleph2.0\obj\x86\Debug\Servrer_aleph2.0.pdb
+C:\Users\Tuszkn\Documents\Visual Studio 2010\Projects\Servrer_aleph2.0\Server_aleph2.0\obj\x86\Debug\Servrer_aleph2.0.exe
+C:\Users\Tuszkn\Documents\Visual Studio 2010\Projects\Servrer_aleph2.0\Server_aleph2.0\obj\x86\Debug\Servrer_aleph2.0.pdb
+C:\Users\Tuszkn\Documents\Visual Studio 2010\Projects\Servrer_aleph2.0\Server_aleph2.0\bin\Debug\Servrer_aleph2.0.exe
+C:\Users\Tuszkn\Documents\Visual Studio 2010\Projects\Servrer_aleph2.0\Server_aleph2.0\bin\Debug\Servrer_aleph2.0.pdb
+C:\Users\Tuszkn\Documents\Visual Studio 2010\Projects\Servrer_aleph2.0\Server_aleph2.0\obj\x86\Debug\Servrer_aleph2._0.Properties.Resources.resources
+C:\Users\Tuszkn\Documents\Visual Studio 2010\Projects\Servrer_aleph2.0\Server_aleph2.0\obj\x86\Debug\Server_aleph_2.window_server.resources
+C:\Users\Tuszkn\Documents\Visual Studio 2010\Projects\Servrer_aleph2.0\Server_aleph2.0\obj\x86\Debug\Server_aleph_2.csproj.GenerateResource.Cache
+C:\Users\Tuszkn\Documents\Visual Studio 2010\Projects\Server_aleph2.0\Server_aleph2.0\obj\x86\Debug\Servrer_aleph2.0.exe
+C:\Users\Tuszkn\Documents\Visual Studio 2010\Projects\Server_aleph2.0\Server_aleph2.0\obj\x86\Debug\Servrer_aleph2.0.pdb
+C:\Users\Tuszkn\Documents\Visual Studio 2010\Projects\Server_aleph2.0\Server_aleph2.0\obj\x86\Debug\Server_aleph_2.csprojResolveAssemblyReference.cache
+C:\Users\Tuszkn\Documents\Visual Studio 2010\Projects\Server_aleph2.0\Server_aleph2.0\obj\x86\Debug\Servrer_aleph2._0.Properties.Resources.resources
+C:\Users\Tuszkn\Documents\Visual Studio 2010\Projects\Server_aleph2.0\Server_aleph2.0\obj\x86\Debug\Server_aleph_2.window_server.resources
+C:\Users\Tuszkn\Documents\Visual Studio 2010\Projects\Server_aleph2.0\Server_aleph2.0\obj\x86\Debug\Server_aleph_2.csproj.GenerateResource.Cache
+C:\Users\Tuszkn\Documents\Visual Studio 2010\Projects\Server_aleph2.0\Server_aleph2.0\bin\Debug\Servrer_aleph2.0.exe
+C:\Users\Tuszkn\Documents\Visual Studio 2010\Projects\Server_aleph2.0\Server_aleph2.0\bin\Debug\Servrer_aleph2.0.pdb
+C:\Users\Tuszkn\Documents\Visual Studio 2010\Projects\Server_aleph2.0\Server_aleph2.0\obj\x86\Debug\Server_aleph_2.EditLibrary.resources

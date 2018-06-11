@@ -46,6 +46,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Control.cs" />
+    <Compile Include="EditLibrary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditLibrary.Designer.cs">
+      <DependentUpon>EditLibrary.cs</DependentUpon>
+    </Compile>
     <Compile Include="Server.cs" />
     <Compile Include="window_server.cs">
       <SubType>Form</SubType>
@@ -55,6 +62,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="EditLibrary.resx">
+      <DependentUpon>EditLibrary.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -67,6 +77,7 @@
     <EmbeddedResource Include="window_server.resx">
       <DependentUpon>window_server.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\Server_aleph_2.Book.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -76,6 +87,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Library.xml">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

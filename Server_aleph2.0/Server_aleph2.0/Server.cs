@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Windows.Forms;
+using System.Threading;
 
 
 
@@ -17,9 +18,13 @@ namespace Server_aleph_2
         public static readonly List<Socket> clientSockets = new List<Socket>();
         private const int BUFFER_SIZE = 2048;
         private static readonly byte[] buffer = new byte[BUFFER_SIZE];
-        
-       
+        private static Control alephControl ;
 
+        public Server(object input)
+        {
+            alephControl = (Control)input;
+
+        }
         public void StartServer(int port)
         {
             try
@@ -29,7 +34,7 @@ namespace Server_aleph_2
                  serverSocket.Listen(0);
                  serverSocket.BeginAccept(AcceptCallback, null);
                
-                 window_server.f("Mamy boski server aleph2.0, względnie jest uruchomiony");
+                 window_server.Log("Mamy boski server aleph2.0, względnie jest uruchomiony");
                
                 }
             catch (SocketException ex)
@@ -46,16 +51,24 @@ namespace Server_aleph_2
         {
             foreach (Socket socket in clientSockets) // wysyła do każdego klienta wiadomość exit oraz zamyka nasłuchiwanie
             {
-                socket.Send( Encoding.ASCII.GetBytes("exit"));
-                socket.Shutdown(SocketShutdown.Both);
-                socket.Close();
+                try
+                {
+                    socket.Send(Encoding.ASCII.GetBytes("exit"));
+                    socket.Shutdown(SocketShutdown.Both);
+                    socket.Close();
+                }
+                catch (SocketException)
+                {
+                    socket.Shutdown(SocketShutdown.Both);
+                    socket.Close();
+                }
                 
                 
             }
             clientSockets.Clear();// czyści liste klientów 
-           
-            serverSocket.Close(); // zamykamy serwer 
-            window_server.f("Nie mamy serwerka aleph.");
+            if(serverSocket != null)
+                serverSocket.Close(); // zamykamy serwer 
+            window_server.Log("Nie mamy serwerka aleph.");
         }
 
         /*
@@ -77,11 +90,12 @@ namespace Server_aleph_2
             }
 
            clientSockets.Add(socket);
-           socket.Send(Encoding.ASCII.GetBytes("Witamy na boskim serwerku\n\r"));
-           socket.BeginReceive(buffer, 0, BUFFER_SIZE, SocketFlags.None, ReceiveCallback, socket); 
+           socket.Send(Encoding.ASCII.GetBytes("Witamy na boskim serwerku"));
+           socket.Send(Encoding.ASCII.GetBytes("|end"));
+           socket.BeginReceive(buffer, 0, BUFFER_SIZE, SocketFlags.None, ReceiveCallback, socket);
            serverSocket.BeginAccept(AcceptCallback, null);
            
-            window_server.f("OO! mammy klienta");
+            window_server.Log("OO! mammy klienta");
                
           
         }
@@ -105,7 +119,7 @@ namespace Server_aleph_2
             }
             catch (SocketException)
             {
-                window_server.f("i nie mamy klienta");
+                window_server.Log("i nie mamy klienta");
 
                 current.Shutdown(SocketShutdown.Both);
                 current.Close();
@@ -116,34 +130,51 @@ namespace Server_aleph_2
             byte[] recBuf = new byte[received];
             Array.Copy(buffer, recBuf, received);
             string text = Encoding.ASCII.GetString(recBuf);
-
-            if (text.ToLower() == "witaj") // klient wita się z nami, bardzo miły jest ten klient 
-            {
-                window_server.f("klient mówi nam cześć");
-                byte[] data = Encoding.ASCII.GetBytes("czesc klient\n\r");
-                current.Send(data);
-
-                
-            }
-            else if (text.ToLower() == "exit") // rozłącz
+            string[] tab_string = text.Split('|');
+           
+           
+            if (tab_string[0].ToLower() == "exit") // rozłącz
             {
                // byte[] data = Encoding.ASCII.GetBytes("exit");
                // current.Send(data);
                 current.Shutdown(SocketShutdown.Both);
                 current.Close();
                 clientSockets.Remove(current);
-                window_server.f("klient powiedział nam pa pa");
+                window_server.Log("klient powiedział nam pa pa");
                 return;
             }
-            else if (text.ToLower() == "jaki czas") // wyśli czas
+            else if (tab_string[0].ToLower() == "kolekcja")
             {
-                byte[] data = Encoding.ASCII.GetBytes(DateTime.Now.ToLongTimeString() + "\n\r");
+                foreach (var items in Control.info.ListBook)
+                {
+                    byte[] data = Encoding.ASCII.GetBytes(items.NameBook + "|" + items.WhoWrote + "|" + items.Description + "|" + items.Borrow + "|");
+                  
+                    current.Send(data);
+                }
+                current.Send(Encoding.ASCII.GetBytes("|end"));
+            }
+            else if (tab_string[0] == "wyp")
+            {
+                byte[] data ;
+                if(tab_string.Length > 1)
+                     data = Encoding.ASCII.GetBytes(alephControl.SearchBook(tab_string[1]) + "|end");
+                else 
+                      data = Encoding.ASCII.GetBytes("brak argumentu|end");
+                current.Send(data);
+            }
+            else if (tab_string[0] == "zwr")
+            {
+                byte[] data;
+                if (tab_string.Length > 1)
+                    data = Encoding.ASCII.GetBytes(alephControl.BackBook(tab_string[1]) + "|end");
+                else
+                    data = Encoding.ASCII.GetBytes("brak argumentu|end");
                 current.Send(data);
             }
             else // nierozpoznane komendy 
             {
-                current.Send(Encoding.ASCII.GetBytes("error inne"));
             }
+
 
             try
             {
@@ -151,9 +182,9 @@ namespace Server_aleph_2
             }
             catch (SocketException)
             {
-                window_server.f("ooo, był klient i go nie ma");
-                if (current.Connected == true)
-                    current.Shutdown(SocketShutdown.Both);
+                window_server.Log("ooo, był klient i go nie ma");
+            
+               // current.Shutdown(SocketShutdown.Both);
                 current.Close();
                 clientSockets.Remove(current);
                 return;
